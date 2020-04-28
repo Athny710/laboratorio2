@@ -10,6 +10,7 @@
         <div th:replace="fragments/fragmento.html :: barraSuperior(actual='department')"></div>
 
         <h2>Nuevo Departamento</h2><hr />
+        <div th:if="${msg!=null}" th:text="${msg}" class="alert alert-success" role="alert"></div>
         <form method="post" th:action="@{/department/guardar}">
             <div class="form-group">
                 <label for="departmentname">Nombre del departamento</label>
