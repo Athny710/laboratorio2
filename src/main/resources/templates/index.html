@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Pagina de Inicio</title>
+</head>
+<body>
+<h1><b>Bienvenidos</b></h1>
+<h3>Por falvor, elija una opcion</h3>
+<a class="btn btn-primary btn-sm" th:href="@{'/employee/listar?id='}" role="button">Employees</a>
+<a class="btn btn-primary btn-sm" th:href="@{'/job/listar?id='}" role="button">Departments</a>
+<a class="btn btn-primary btn-sm" th:href="@{'/department/listar?id='}" role="button">Jobs</a>
+</body>
+</html>
