@@ -51,8 +51,8 @@ public class JobController {
         String name = departmentRepository.findByAndDepartmentname(dep).getDepartmentshortname();
         String id = job.getJob_title()+"_"+name;
         job.setJob_id(id);
-        List<Job> l = jobRepository.findByJob_id(id);
-        if(l.isEmpty()){
+        Optional<Job> optl = jobRepository.findById(id);
+        if(optl.isPresent()){
             attr.addFlashAttribute("msg", "Usuario creado exitosamente");
             return "redirect:/job";
         }else{
