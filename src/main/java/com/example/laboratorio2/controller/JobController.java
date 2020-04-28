@@ -19,6 +19,7 @@ public class JobController {
 
     @Autowired
     JobRepository jobRepository;
+
     @GetMapping(value={"","/listar"})
     public String listar(Model model){
         List<Job> lista = jobRepository.findAll();
