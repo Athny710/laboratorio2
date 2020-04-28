@@ -78,4 +78,20 @@ public class EmployeeController {
             return "redirect:/employee";
         }
     }
+
+
+
+    @GetMapping("/borrar")
+    public String borrarEmployee(@RequestParam("id") String id){
+        Optional<Employee> opt = employeeRepository.findById(id);
+
+        if (opt.isPresent()) {
+            employeeRepository.deleteById(id);
+            return "redirect:/employee";
+        }else{
+            return "redirect:/employee";
+        }
+    }
+
+
 }
