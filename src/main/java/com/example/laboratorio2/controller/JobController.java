@@ -42,6 +42,12 @@ public class JobController {
         }
     }
 
+
+    @GetMapping("/agregar")
+    public String nuevoJob(){
+        return "job/agregar";
+    }
+
     @GetMapping("/borrar")
     public String borrarJob(@RequestParam("id") String id){
         Optional<Job> opt = jobRepository.findById(id);
