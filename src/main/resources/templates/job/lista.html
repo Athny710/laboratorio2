@@ -1,10 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Listar Empleados</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    <script th:href="@{/js/bootstrap.min.js}"></script>
 </head>
-<body>
+<body class="container">
+<div th:replace="fragments/fragmento.html :: barraSuperior(actual='employee')"></div>
+
+<h2>Jobs List</h2>
+<a class="btn btn-primary mt-4 mb-4" th:href="@{'/employee/create'}">New Job</a>
+<div th:if="${msg != null}" th:text="${msg}" class="alert alert-success" role="alert"></div>
+
+<table class="table table-sm">
+    <tr>
+        <th>#</th>
+        <th>Nombre Trabajo</th>
+        <th>Salario min-max</th>
+        <th></th>
+        <th></th>
+    </tr>
+    <tr th:each="job, i:${lista}">
+        <td th:text="${i.index +1}"></td>
+        <td th:text="${job.getJob_title()}"></td>
+
+        <td><a class="btn btn-primary" th:href="@{'/job/edit?id=' + ${job.getJob_id()}}">Editar</a></td>
+        <td><a class="btn btn-danger" th:href="@{'/department/borrar?id=' + ${job.getJob_id()}}">Borrar</a></td>
+    </tr>
+</table>
 
 </body>
 </html>
