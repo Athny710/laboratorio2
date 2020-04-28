@@ -77,7 +77,9 @@ public class DepartmentController {
 
 
     @GetMapping("/borrar")
-    public String borrarDepartment(@RequestParam("id") int id){
+    public String borrarDepartment(@RequestParam("id") int id,
+                                   RedirectAttributes attr){
+
         Optional<Department> opt = departmentRepository.findById(id);
 
         if (opt.isPresent()) {
