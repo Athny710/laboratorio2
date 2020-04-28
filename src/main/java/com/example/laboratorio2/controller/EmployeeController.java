@@ -33,9 +33,25 @@ public class EmployeeController {
     @GetMapping(value={"","/listar"})
     public String listar(Model model){
         List<Employee> lista = employeeRepository.findAll();
+        List<Job> listaJob = jobRepository.findAll();
+        List<Department> listaDep = departmentRepository.findAll();
         model.addAttribute("lista", lista);
+        model.addAttribute("listaJob", listaJob);
+        model.addAttribute("listaDep", listaDep);
         return "employee/lista";
     }
+
+    @GetMapping("/create")
+    public String crearEmp(Model model) {
+        List<Job> listaJob = jobRepository.findAll();
+        List<Department> listaDep = departmentRepository.findAll();
+        List<Employee> listaMan = employeeRepository.findAll();
+        model.addAttribute("listaJob", listaJob);
+        model.addAttribute("listaDep", listaDep);
+        model.addAttribute("listaMan", listaMan);
+        return "employee/crear";
+    }
+
     @PostMapping("/save")
     public String guardarEmp(Employee emp) {
         if (emp.getEmployeeid()==null) {

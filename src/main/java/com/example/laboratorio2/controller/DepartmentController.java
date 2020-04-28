@@ -32,8 +32,6 @@ public class DepartmentController {
 
     @GetMapping(value = "/nuevo")
     public String nuevoDepartment(){
-
-
         return "department/crear";
     }
 
@@ -69,9 +67,9 @@ public class DepartmentController {
         if (optDepartment.isPresent()) {
             Department department = optDepartment.get();
             model.addAttribute("department", department);
-            return "job/editar";
+            return "department/editar";
         } else {
-            return "redirect:/job/listar";
+            return "redirect:/department/listar";
         }
     }
 

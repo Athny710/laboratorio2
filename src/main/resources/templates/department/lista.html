@@ -36,7 +36,6 @@
                 <td th:text="${d.departmentname}"></td>
                 <td th:text="${d.managerid}"></td>
                 <td th:text="${d.departmentshortname}"></td>
-                <!--td><a th:href="@{|/shipper/editar'?'id=${shipper.shipperid}|}">Editar</a></td=-->
                 <td><a th:href="@{'/department/editar?id='+${d.departmentid}}"class="btn btn-primary">Editar</a></td>
                 <td><a th:href="@{'/department/borrar?id='+${d.departmentid}}" class="btn btn-danger">Borrar</a></td>
 
