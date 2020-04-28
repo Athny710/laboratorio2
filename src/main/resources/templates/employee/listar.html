@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Listar Empleados</title>
+        <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+        <script th:href="@{/js/bootstrap.min.js}"></script>
+    </head>
+    <body class="container">
+        <div th:replace="fragments/fragmento.html :: barraSuperior(actual='employee')"></div>
+
+        <h2>Lista de Empleados</h2>
+        <a class="btn btn-primary mt-4 mb-4" th:href="@{'/employee/create'}">Nuevo Empleado</a>
+        <div th:if="${msg != null}" th:text="${msg}" class="alert alert-success" role="alert"></div>
+
+        <table class="table table-sm">
+            <tr>
+                <th>#</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>E-mail</th>
+                <th>Teléfono</th>
+                
+                <th>ID de trabajo</th>
+                <th>Salario</th>
+                <th>Comisión</th>
+                <th>ID de jefe</th>
+                <th>ID de departamento</th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr th:each="emp, i:${lista}">
+                <td th:text="${i.index +1}"></td>
+                <td th:text="${emp.first_name}"></td>
+                <td th:text="${emp.last_name}"></td>
+                <td th:text="${emp.email}"></td>
+                <td th:text="${emp.phone_number}"></td>
+               
+                <td th:text="${emp.job_id}"></td>
+                <td th:text="${emp.salary}"></td>
+                <td th:text="${emp.commission_pct==null}? 'Sin comisión' : ${emp.commission_pct}"></td>
+                <td th:text="${emp.manager_id==null}? 'Sin jefe' : ${emp.manager_id}"></td>
+                <td th:text="${emp.department_id}"></td>
+                <td><a class="btn btn-primary" th:href="@{'/employee/edit?id=' + ${emp.employeeid}}">Editar</a></td>
+                <td><a class="btn btn-danger" th:href="@{'/employee/delete?id=' + ${emp.employeeid}}">Borrar</a></td>
+            </tr>
+        </table>
+        
+    </body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Actualizar Empleado</title>
+        <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+        <script th:href="@{/js/bootstrap.min.js}"></script>
+    </head>
+    <body class="container">
+        <div th:replace="fragments/fragmento.html :: barraSuperior(actual='employee')"></div>
+        
+        <h2>Actualizar Empleado</h2>
+        <hr/>
+        
+        <form method="post" th:action="@{'/employee/save'}">
+            <div class="form-group">
+                <label for="first_name">Nombre</label>
+                <input name="first_name" type="text" class="form-control" id="first_name" th:value="${employee.first_name}">
+            </div>
+            <div class="form-group">
+                <label for="last_name">Apellido</label>
+                <input name="last_name" type="text" class="form-control" id="last_name" th:value="${employee.last_name}">
+            </div>
+            <div class="form-group">
+                <label for="email">E-mail</label>
+                <input name="email" type="text" class="form-control" id="email" th:value="${employee.email}">
+            </div>
+            <div class="form-group">
+                <label for="phone_number">Teléfono</label>
+                <input name="phone_number" type="text" class="form-control" id="phone_number" th:value="${employee.phone_number}">
+            </div>
+            
+            <div class="form-group">
+                <label for="job_id">Trabajo</label>
+                <select class="form-control" name="job_id" id="job_id">
+                    <option th:each="job : ${listaJob}" th:selected="${employee.job_id == job.job_id}" th:value="${job.job_id}" th:text="${job.job_title}"></option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="salary">Salary</label>
+                <input name="salary" type="text" class="form-control" id="salary" th:value="${employee.salary}">
+            </div>
+            <div class="form-group">
+                <label for="commission_pct">Comisión</label>
+                <input name="commission_pct" type="text" class="form-control" id="commission_pct" th:value="${employee.commission_pct}">
+            </div>
+            <div class="form-group">
+                <label for="manager_id">Jefe</label>
+                <select class="form-control" name="manager_id" id="manager_id">
+                    <option th:selected="${employee.manager_id == null}" value="0" >-----------Sin Jefe--------------</option>
+                    <option th:each="man : ${listaMan}"  th:selected="${employee.manager_id == man.employeeid}" th:value="${man.employeeid}" th:text="${man.first_name}+' ' +${man.last_name}"></option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="department_id">Departamento</label>
+                <select class="form-control" name="department_id" id="department_id">
+                    <option th:each="dep : ${listaDep}"  th:selected="${employee.department_id == dep.departmentid}" th:value="${dep.departmentid}" th:text="${dep.departmentname}"></option>
+                </select>
+            </div>
+            <a th:href="@{'/employee/list'}" class="btn btn-danger">Cancelar</a>
+            <button type="submit" class="btn btn-primary">Actualizar</button>
+        </form>
+    
+    </body>
+</html>

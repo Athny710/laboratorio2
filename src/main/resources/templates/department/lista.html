@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Lista Departments</title>
+        <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    </head>
+    <body class="container">
+
+        <div th:replace="fragments/fragmento.html :: barraSuperior(actual='department')"></div>
+
+        <h2>Lista Departamentos</h2>
+
+        <a th:href="@{/department/nuevo}" class="btn btn-primary mt-4 mb-4" >Crear nuevo departamento</a>
+
+        <form method="post" th:action="@{/department/buscarDepartamento}">
+            <input name="searchField" class="form-control mb-3" type="text" placeholder="Buscar"/>
+        </form>
+
+        <a th:if="${searchField!=null}" class="btn btn-danger mt-4 mb-4" th:href="@{/department/listar}">Volver a mostrar la lista completa</a>
+        <div th:if="${msg!=null}" th:text="${msg}" class="alert alert-success" role="alert"></div>
+
+        <table class="table table-sm">
+            <tr>
+                <th>#</th>
+                <th>ID</th>
+                <th>Department Name</th>
+                <th>Manager</th>
+                <th>Department Short Name</th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr th:each="d, i: ${lista}">
+                <td th:text="${i.index + 1}"></td>
+                <td th:text="${d.departmentid}"></td>
+                <td th:text="${d.departmentname}"></td>
+                <td th:text="${d.managerid}"></td>
+                <td th:text="${d.departmentshortname}"></td>
+                <!--td><a th:href="@{|/shipper/editar'?'id=${shipper.shipperid}|}">Editar</a></td=-->
+                <td><a th:href="@{'/department/editar?id='+${d.departmentid}}"class="btn btn-primary">Editar</a></td>
+                <td><a th:href="@{'/department/borrar?id='+${d.departmentid}}" class="btn btn-danger">Borrar</a></td>
+
+            </tr>
+        </table>
+    </body>
+</html>
