@@ -35,10 +35,10 @@ public class JobController {
     public String editarJob(Model model,
                             @RequestParam("id") String id) {
 
-        Optional<Job> optShipper = jobRepository.findById(id);
+        Optional<Job> optJob = jobRepository.findById(id);
 
-        if (optShipper.isPresent()) {
-            Job job = optShipper.get();
+        if (optJob.isPresent()) {
+            Job job = optJob.get();
             model.addAttribute("job", job);
             return "job/editar";
         } else {
