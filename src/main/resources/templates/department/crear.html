@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Nuevo Departamento</title>
+        <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    </head>
+    <body class="container">
+
+        <div th:replace="fragments/fragmento.html :: barraSuperior(actual='department')"></div>
+
+        <h2>Nuevo Departamento</h2><hr />
+        <form method="post" th:action="@{/department/guardar}">
+            <div class="form-group">
+                <label for="departmentname">Nombre del departamento</label>
+                <input name="departmentname" type="text" class="form-control" id="departmentname">
+            </div>
+            <div class="form-group">
+                <label for="managerid">Manager</label>
+                <input name="managerid" type="text" class="form-control" id="managerid">
+            </div>
+            <div class="form-group">
+                <label for="departmentshortname">Nombre corto del departamento</label>
+                <input name="departmentshortname" type="text" class="form-control" id="departmentshortname">
+            </div>
+
+            <a th:href="@{/department/listar}" class="btn btn-danger">Cancelar</a>
+            <button type="submit" class="btn btn-primary">Registrar</button>
+        </form>
+    </body>
+</html>
