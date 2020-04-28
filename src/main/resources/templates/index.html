@@ -3,12 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Pagina de Inicio</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    <script th:href="@{/js/bootstrap.min.js}"></script>
 </head>
 <body>
 <h1><b>Bienvenidos</b></h1>
+<hr>
 <h3>Por falvor, elija una opcion</h3>
-<a class="btn btn-primary btn-sm" th:href="@{'/employee/listar?id='}" role="button">Employees</a>
-<a class="btn btn-primary btn-sm" th:href="@{'/job/listar?id='}" role="button">Departments</a>
-<a class="btn btn-primary btn-sm" th:href="@{'/department/listar?id='}" role="button">Jobs</a>
+<hr>
+<a class="btn btn-primary btn-sm" th:href="@{/employee/listar}" role="button">Employees</a>
+<a class="btn btn-primary btn-sm" th:href="@{/job/listar}" role="button">Jobs</a>
+<a class="btn btn-primary btn-sm" th:href="@{/department/listar}" role="button">Departments</a>
 </body>
 </html>

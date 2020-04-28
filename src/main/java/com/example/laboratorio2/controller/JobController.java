@@ -20,6 +20,6 @@ public class JobController {
     public String listar(Model model){
         List<Job> lista = jobRepository.findAll();
         model.addAttribute("lista", lista);
-        return "job/listar";
+        return "job/lista";
     }
 }

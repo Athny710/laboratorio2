@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 
 @Controller
-@RequestMapping("/Department")
+@RequestMapping("/department")
 public class DepartmentController {
 
     @Autowired
@@ -21,6 +21,6 @@ public class DepartmentController {
     public String listar(Model model){
         List<Department> lista = departmentRepository.findAll();
         model.addAttribute("lista", lista);
-        return "department/listar";
+        return "department/lista";
     }
 }
